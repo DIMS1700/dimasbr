@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maafkan Aku</title>
+    <style>
+        body {
+            background-color: #f0e4d7;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background-image: url(WhatsApp\ Image\ 2024-09-06\ at\ 13.19.35_cd4b1c3e.jpg); /* Ganti dengan link gambar background */
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            animation: fadeInZoomIn 2s ease-in-out; /* Menambahkan animasi */
+        }
+
+        @keyframes fadeInZoomIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h1 {
+            color: #b56576;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #333;
+            font-size: 1.5em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            background-color: #b56576;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #94445b;
+        }
+
+        .choice-buttons {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .choice-button {
+            background-color: #b56576;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .choice-button:hover {
+            background-color: #94445b;
+        }
+
+        .audio-controls {
+            margin-top: 20px;
+        }
+
+        .audio-control-button {
+            background-color: #b56576;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .audio-control-button:hover {
+            background-color: #94445b;
+        }
+
+        @media (max-width: 844px) {
+            h1 {
+                font-size: 2.2em;
+            }
+
+            p {
+                font-size: 1.3em;
+            }
+
+            .button {
+                font-size: 1.1em;
+                padding: 12px 24px;
+            }
+
+            .choice-button {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+
+            .container {
+                margin: 0 30px; /* More margin for medium screens */
+            }
+        }
+
+        @media (max-width: 390px) { /* Adjustments for iPhone 12 */
+            .container {
+                padding: 30px;
+                margin: 0 10px; /* Less margin but still some spacing */
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            p {
+                font-size: 1.1em;
+            }
+
+            .button {
+                font-size: 1.1em;
+                padding: 12px 24px;
+            }
+
+            .choice-button {
+                font-size: 0.9em;
+                padding: 10px 20px;
+            }
+        }
+        
+
+        @media (orientation: landscape) {
+            .container {
+                padding: 60px; /* Menambahkan padding lebih untuk ruang yang lebih */
+                max-width: 800px; /* Lebar container yang lebih besar untuk layar lanskap */
+                margin: 20px; /* Menambahkan margin untuk memberi jarak dari tepi */
+            }
+
+            h1 {
+                font-size: 2.5em;
+                margin-bottom: 30px; /* Menambahkan jarak bawah untuk judul */
+            }
+
+            p {
+                font-size: 1.3em;
+                margin-bottom: 40px; /* Menambahkan jarak bawah untuk paragraf */
+            }
+
+            .button {
+                font-size: 1.1em;
+                padding: 15px 30px; /* Menambahkan padding untuk tombol */
+            }
+
+            .choice-button {
+                font-size: 0.9em;
+                padding: 10px 20px; /* Menambahkan padding untuk tombol pilihan */
+            }
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Maafkan Aku</h1>
+        <p>Sayang, aku sungguh menyesal atas apa yang terjadi. Aku berharap kamu bisa memberi aku kesempatan untuk memperbaiki semuanya. Aku mencintaimu dan tak ingin kehilanganmu.</p>
+        <button class="button" id="forgivenessButton">Aku Berharap Kamu Memaafkan</button>
+        
+        <!-- Tombol pilihan muncul setelah tombol diklik -->
+        <div class="choice-buttons" id="choiceButtons">
+            <button class="choice-button" id="yesButton">Iya</button>
+            <button class="choice-button" id="noButton">Tidak</button>
+        </div>
+
+        <!-- Kontrol suara -->
+        <div class="audio-controls">
+            <button class="audio-control-button" id="playAudioButton">Nyalakan Music</button>
+            <button class="audio-control-button" id="pauseAudioButton">Matikan Music</button>
+        </div>
+    </div>
+
+    <!-- Audio romantis -->
+    <audio id="backgroundAudio" loop>
+        <source src="Rizwan Fadilah - Tanpa Bicara (Lirik Lagu).mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Dapatkan elemen tombol dan pilihan
+        const forgivenessButton = document.getElementById('forgivenessButton');
+        const choiceButtons = document.getElementById('choiceButtons');
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+        const playAudioButton = document.getElementById('playAudioButton');
+        const pauseAudioButton = document.getElementById('pauseAudioButton');
+        const backgroundAudio = document.getElementById('backgroundAudio');
+
+        // URL WhatsApp API
+        const whatsappBaseUrl = 'https://api.whatsapp.com/send?phone=PHONE_NUMBER&text=';
+
+        // Nomor telepon tujuan (ganti dengan nomor yang sesuai)
+        const phoneNumber = '6282216631335'; // Ganti dengan nomor telepon yang benar
+
+        // Pesan untuk tombol "Iya"
+        const yesMessage = encodeURIComponent('Aku udah maafin kamu sayangg❤️.');
+        const yesUrl = `${whatsappBaseUrl.replace('PHONE_NUMBER', phoneNumber)}${yesMessage}`;
+
+        // Pesan untuk tombol "Tidak"
+        const noMessage = encodeURIComponent('Aku belum bisa maafin kamu sayangg.');
+        const noUrl = `${whatsappBaseUrl.replace('PHONE_NUMBER', phoneNumber)}${noMessage}`;
+
+        // Ketika tombol "Aku Berharap Kamu Memaafkan" diklik
+        forgivenessButton.addEventListener('click', function() {
+            // Sembunyikan tombol permintaan maaf dan tampilkan tombol pilihan
+            forgivenessButton.style.display = 'none';
+            choiceButtons.style.display = 'block';
+        });
+
+        // Aksi ketika tombol "Iya" diklik
+        yesButton.addEventListener('click', function() {
+            window.open(yesUrl, '_blank');
+        });
+
+        // Aksi ketika tombol "Tidak" diklik
+        noButton.addEventListener('click', function() {
+            window.open(noUrl, '_blank');
+        });
+
+        // Kontrol audio
+        playAudioButton.addEventListener('click', function() {
+            backgroundAudio.play();
+            playAudioButton.style.display = 'none';
+            pauseAudioButton.style.display = 'inline-block';
+        });
+
+        pauseAudioButton.addEventListener('click', function() {
+            backgroundAudio.pause();
+            pauseAudioButton.style.display = 'none';
+            playAudioButton.style.display = 'inline-block';
+        });
+
+        // Initialize
+        pauseAudioButton.style.display = 'none';
+    </script>
+</body>
+</html>
